@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head><script src="/_sdk/telemetry_sdk.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Pembelajaran Kimia Kelas X</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=Source+Sans+3:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+html, body { height: 100%; margin: 0; overflow: hidden; }
+* { box-sizing: border-box; }
+.font-heading { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'Source Sans 3', sans-serif; }
+
+/* Animated background particles */
+@keyframes float { 0%,100%{ transform: translateY(0) rotate(0deg); opacity:0.3; } 50%{ transform: translateY(-20px) rotate(180deg); opacity:0.7; } }
+@keyframes pulse-glow { 0%,100%{ box-shadow: 0 0 20px rgba(59,130,246,0.3); } 50%{ box-shadow: 0 0 40px rgba(59,130,246,0.6); } }
+@keyframes slide-up { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+@keyframes bubble { 0%{ transform: translateY(100%) scale(0.5); opacity:0; } 50%{ opacity:0.6; } 100%{ transform: translateY(-100%) scale(1); opacity:0; } }
+
+.particle { position: absolute; border-radius: 50%; animation: float 6s infinite ease-in-out; pointer-events: none; }
+.bubble-anim { position: absolute; border-radius: 50%; animation: bubble 8s infinite ease-in-out; pointer-events: none; }
+.slide-up { animation: slide-up 0.8s ease forwards; }
+.pulse-glow { animation: pulse-glow 3s infinite; }
+
+/* Custom scrollbar */
+.custom-scroll::-webkit-scrollbar { width: 6px; }
+.custom-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 3px; }
+.custom-scroll::-webkit-scrollbar-thumb { background: rgba(100,150,255,0.4); border-radius: 3px; }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(100,150,255,0.7); }
+
+/* Dropdown styles */
+.dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+.dropdown-content.open { max-height: 2000px; padding-top: 8px; }
+
+/* Upload area */
+.upload-zone { border: 2px dashed rgba(100,150,255,0.4); transition: all 0.3s; }
+.upload-zone:hover { border-color: rgba(100,150,255,0.8); background: rgba(100,150,255,0.05); }
+
+/* Modal overlay */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; display: none; align-items: center; justify-content: center; }
+.modal-overlay.active { display: flex; }
+
+/* Landing page chemistry icons */
+@keyframes orbit1 { 0%{ transform: rotate(0deg) translateX(120px) rotate(0deg); } 100%{ transform: rotate(360deg) translateX(120px) rotate(-360deg); } }
+@keyframes orbit2 { 0%{ transform: rotate(0deg) translateX(180px) rotate(0deg); } 100%{ transform: rotate(-360deg) translateX(180px) rotate(360deg); } }
+@keyframes flask-bubble { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-8px); } }
+
+.orbit1 { animation: orbit1 12s linear infinite; }
+.orbit2 { animation: orbit2 18s linear infinite; }
+.flask-anim { animation: flask-bubble 3s ease-in-out infinite; }
+
+/* Background animated molecules for content page */
+@keyframes drift { 0%{ transform: translate(0,0) rotate(0deg); } 25%{ transform: translate(30px,-20px) rotate(90deg); } 50%{ transform: translate(-10px,-40px) rotate(180deg); } 75%{ transform: translate(-30px,-10px) rotate(270deg); } 100%{ transform: translate(0,0) rotate(360deg); } }
+.mol-drift { animation: drift 20s linear infinite; pointer-events: none; opacity: 0.08; }
+
+/* Quiz login form */
+.quiz-login { background: rgba(15,23,42,0.95); border: 1px solid rgba(100,150,255,0.3); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .three-col { flex-direction: column !important; }
+  .col-left, .col-right { width: 100% !important; min-width: 100% !important; max-width: 100% !important; }
+  .col-center { width: 100% !important; min-width: 100% !important; }
+}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body bg-slate-950 text-gray-100"><!-- PAGE: Landing -->
+  <div id="page-landing" class="h-full w-full relative flex items-center justify-center overflow-hidden"><!-- Animated background -->
+   <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900"></div><!-- Chemistry animation elements -->
+   <div class="absolute inset-0 overflow-hidden"><!-- Floating particles -->
+    <div class="particle w-3 h-3 bg-blue-400/40 top-[20%] left-[10%]" style="animation-delay:0s"></div>
+    <div class="particle w-2 h-2 bg-cyan-400/30 top-[40%] left-[80%]" style="animation-delay:1s"></div>
+    <div class="particle w-4 h-4 bg-purple-400/30 top-[70%] left-[20%]" style="animation-delay:2s"></div>
+    <div class="particle w-2 h-2 bg-emerald-400/40 top-[30%] left-[60%]" style="animation-delay:3s"></div>
+    <div class="particle w-3 h-3 bg-amber-400/30 top-[80%] left-[70%]" style="animation-delay:4s"></div>
+    <div class="particle w-2 h-2 bg-rose-400/30 top-[15%] left-[45%]" style="animation-delay:5s"></div><!-- Orbiting chemistry icons -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+     <div class="orbit1 absolute">
+      <svg width="40" height="40" viewbox="0 0 40 40" class="text-blue-400/50">
+       <path d="M20 5 L15 20 L10 35 L20 30 L30 35 L25 20 Z" fill="none" stroke="currentColor" stroke-width="1.5" /><circle cx="20" cy="12" r="3" fill="currentColor" opacity="0.5" />
+      </svg>
+     </div>
+     <div class="orbit2 absolute">
+      <svg width="36" height="36" viewbox="0 0 36 36" class="text-cyan-400/40">
+       <rect x="8" y="5" width="20" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" /><path d="M12 28 Q18 20 24 28" fill="currentColor" opacity="0.3" /><line x1="18" y1="5" x2="18" y2="2" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+     </div>
+    </div><!-- Flask SVGs -->
+    <div class="absolute top-[15%] left-[8%] flask-anim" style="animation-delay:0.5s">
+     <svg width="50" height="60" viewbox="0 0 50 60" class="text-emerald-400/30">
+      <path d="M18 5 L18 25 L5 50 Q5 55 10 55 L40 55 Q45 55 45 50 L32 25 L32 5 Z" fill="none" stroke="currentColor" stroke-width="1.5" /><path d="M10 45 Q25 38 40 45 L40 50 Q40 55 35 55 L15 55 Q10 55 10 50 Z" fill="currentColor" opacity="0.3" />
+     </svg>
+    </div>
+    <div class="absolute top-[60%] right-[10%] flask-anim" style="animation-delay:1.5s">
+     <svg width="45" height="55" viewbox="0 0 45 55" class="text-purple-400/30">
+      <circle cx="22" cy="35" r="18" fill="none" stroke="currentColor" stroke-width="1.5" /><line x1="22" y1="17" x2="22" y2="5" stroke="currentColor" stroke-width="1.5" /><rect x="17" y="3" width="10" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1" /><path d="M10 38 Q22 30 34 38 Q34 48 22 50 Q10 48 10 38 Z" fill="currentColor" opacity="0.2" />
+     </svg>
+    </div>
+    <div class="absolute bottom-[20%] left-[25%] flask-anim" style="animation-delay:2.5s">
+     <svg width="40" height="50" viewbox="0 0 40 50" class="text-amber-400/25">
+      <path d="M15 5 L15 18 L5 40 L5 43 Q5 47 9 47 L31 47 Q35 47 35 43 L35 40 L25 18 L25 5 Z" fill="none" stroke="currentColor" stroke-width="1.5" /><line x1="12" y1="5" x2="28" y2="5" stroke="currentColor" stroke-width="1.5" />
+     </svg>
+    </div><!-- Atom model -->
+    <div class="absolute top-[25%] right-[20%]">
+     <svg width="80" height="80" viewbox="0 0 80 80" class="text-blue-300/20"><circle cx="40" cy="40" r="6" fill="currentColor" /> <ellipse cx="40" cy="40" rx="35" ry="12" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(0 40 40)" /> <ellipse cx="40" cy="40" rx="35" ry="12" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(60 40 40)" /> <ellipse cx="40" cy="40" rx="35" ry="12" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(120 40 40)" />
+     </svg>
+    </div><!-- Bubbles -->
+    <div class="bubble-anim w-4 h-4 bg-blue-400/20 left-[30%] top-[90%]" style="animation-delay:0s"></div>
+    <div class="bubble-anim w-3 h-3 bg-cyan-400/20 left-[50%] top-[90%]" style="animation-delay:2s"></div>
+    <div class="bubble-anim w-5 h-5 bg-indigo-400/15 left-[70%] top-[90%]" style="animation-delay:4s"></div>
+   </div><!-- Main content -->
+   <div class="relative z-10 text-center px-6 max-w-3xl slide-up">
+    <div class="mb-8">
+     <div class="inline-block p-4 rounded-full bg-blue-500/10 border border-blue-400/20 pulse-glow mb-6">
+      <svg width="60" height="60" viewbox="0 0 60 60" class="text-blue-400"><path d="M22 8 L22 22 L10 45 Q10 52 17 52 L43 52 Q50 52 50 45 L38 22 L38 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" /> <line x1="18" y1="8" x2="42" y2="8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" /> <path d="M15 40 Q30 34 45 40 L45 45 Q45 50 40 50 L20 50 Q15 50 15 45 Z" fill="currentColor" opacity="0.3" /> <circle cx="25" cy="38" r="2" fill="currentColor" opacity="0.6" /> <circle cx="35" cy="42" r="1.5" fill="currentColor" opacity="0.5" /> <circle cx="30" cy="35" r="1" fill="currentColor" opacity="0.4" />
+      </svg>
+     </div>
+    </div>
+    <h1 class="font-heading text-4xl md:text-6xl font-900 text-white mb-4 tracking-tight" id="landing-title">Kimia Kelas X</h1>
+    <p class="text-xl md:text-2xl text-blue-200/80 mb-2 font-light">Fase E – Kurikulum Merdeka</p>
+    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto my-6"></div>
+    <p class="text-lg text-gray-300 mb-1">Penyusun:</p>
+    <p class="text-xl text-white font-semibold mb-1" id="landing-teacher">Dedi Erlangga, S. Pd.</p>
+    <p class="text-gray-400">SMAN 1 Kapuas Hulu</p><button onclick="showPage('content')" class="mt-10 px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"> Mulai Belajar <i data-lucide="arrow-right" class="inline w-5 h-5 ml-2"></i> </button>
+   </div>
+  </div><!-- PAGE: Content -->
+  <div id="page-content" class="h-full w-full hidden relative overflow-hidden"><!-- Animated background for content page -->
+   <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"></div>
+   <div class="absolute inset-0 overflow-hidden">
+    <div class="mol-drift absolute top-[10%] left-[5%]">
+     <svg width="60" height="60">
+      <circle cx="20" cy="30" r="8" stroke="#64b5f6" fill="none" stroke-width="1" /><circle cx="40" cy="20" r="6" stroke="#64b5f6" fill="none" stroke-width="1" /><line x1="26" y1="26" x2="36" y2="22" stroke="#64b5f6" stroke-width="1" />
+     </svg>
+    </div>
+    <div class="mol-drift absolute top-[50%] right-[5%]" style="animation-delay:-5s">
+     <svg width="50" height="50">
+      <circle cx="25" cy="25" r="10" stroke="#ce93d8" fill="none" stroke-width="1" /><circle cx="25" cy="25" r="3" fill="#ce93d8" opacity="0.3" />
+     </svg>
+    </div>
+    <div class="mol-drift absolute bottom-[10%] left-[40%]" style="animation-delay:-10s">
+     <svg width="70" height="40">
+      <circle cx="15" cy="20" r="7" stroke="#80cbc4" fill="none" stroke-width="1" /><circle cx="40" cy="20" r="7" stroke="#80cbc4" fill="none" stroke-width="1" /><circle cx="60" cy="20" r="5" stroke="#80cbc4" fill="none" stroke-width="1" /><line x1="22" y1="20" x2="33" y2="20" stroke="#80cbc4" stroke-width="1" /><line x1="47" y1="20" x2="55" y2="20" stroke="#80cbc4" stroke-width="1" />
+     </svg>
+    </div>
+   </div><!-- Three column layout -->
+   <div class="relative z-10 h-full flex three-col"><!-- Column 1: Navigation (1/4) -->
+    <div class="col-left w-1/4 min-w-[280px] max-w-[320px] h-full border-r border-blue-400/10 bg-slate-900/80 backdrop-blur-sm flex flex-col overflow-hidden"><!-- Header -->
+     <div class="p-4 border-b border-blue-400/10 flex-shrink-0">
+      <div class="flex items-center gap-3 mb-2"><button onclick="showPage('landing')" class="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 transition-colors" title="Kembali ke Halaman Muka"> <i data-lucide="home" class="w-4 h-4"></i> </button>
+       <div>
+        <h2 class="font-heading text-sm font-bold text-white">Kimia Kelas X - Fase E</h2>
+        <p class="text-xs text-gray-400" id="nav-teacher">Guru : Dedi Erlangga, S. Pd.</p>
+       </div>
+      </div>
+     </div><!-- Navigation items -->
+     <div class="flex-1 overflow-y-auto custom-scroll p-3 space-y-2" id="nav-list"><!-- Generated by JS -->
+     </div><!-- Penilaian dropdown -->
+     <div class="flex-shrink-0 border-t border-blue-400/10 p-3"><button onclick="toggleDropdown('penilaian-dd')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-sm font-semibold transition-colors"> <span><i data-lucide="clipboard-check" class="inline w-4 h-4 mr-2"></i>Penilaian</span> <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" id="penilaian-dd-icon"></i> </button>
+      <div id="penilaian-dd" class="dropdown-content text-xs space-y-1 ml-2"><a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Tugas 01</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Tugas 02</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Tugas 03</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Tugas 04</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Tugas 05</a>
+       <div class="border-t border-blue-400/10 my-1"></div><a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Ulangan Pokok Bahasan 01</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Ulangan Pokok Bahasan 02</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Ulangan Pokok Bahasan 03</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Ulangan Pokok Bahasan 04</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-gray-300 hover:bg-blue-500/10 hover:text-blue-300 transition-colors">Ulangan Pokok Bahasan 05</a>
+       <div class="border-t border-blue-400/10 my-1"></div><a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-amber-300 hover:bg-amber-500/10 transition-colors font-semibold">Penilaian Tengah Semester</a> <a href="#" target="_blank" rel="noopener noreferrer" class="block px-3 py-1.5 rounded text-amber-300 hover:bg-amber-500/10 transition-colors font-semibold">Penilaian Akhir Semester</a>
+      </div>
+     </div>
+    </div><!-- Column 2: Content (2/4) -->
+    <div class="col-center flex-1 h-full overflow-y-auto custom-scroll" id="content-area">
+ <div class="p-6 md:p-8 max-w-4xl mx-auto" id="content-body">
+  <div class="text-center py-12 text-gray-400">
+   <i data-lucide="book-open" class="w-16 h-16 mx-auto mb-6 opacity-30"></i>
+   <div class="max-w-xl mx-auto mb-10 text-center bg-transparent text-gray-300">
+    <h2 class="text-lg font-bold text-gray-800 text-center mb-4">
+     Tujuan Pembelajaran <br>
+     <span class="text-sm font-medium text-gray-500">Kimia Kelas X – Fase E</span>
+    </h2>
+    <ol class="list-decimal pl-5 space-y-2.5 text-sm md:text-base">
+    <center>Memahami struktur atom yang dapat mempengaruhi sifat atom dan perilaku materi dan Menganalisis reaksi kimia, hukum dasar kimia untuk memecahkan permasalahan lingkungan</center>
+    </ol>
+   </div>
+   <p class="text-lg">Pilih sub pokok bahasan dari menu di sebelah kiri</p>
+  </div>
+ </div>
+</div><!-- Column 3: Extra info (1/4) -->
+    <div class="col-right w-1/4 min-w-[250px] max-w-[300px] h-full border-l border-blue-400/10 bg-slate-900/60 backdrop-blur-sm overflow-y-auto custom-scroll p-4">
+     <h3 class="font-heading text-sm font-bold text-blue-300 mb-4 flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4"></i> Materi Tambahan &amp; Informasi</h3>
+     <div id="extra-info">
+      <p class="text-xs text-gray-400">Pilih pokok bahasan untuk melihat materi tambahan.</p>
+     </div>
+    </div>
+   </div>
+  </div><!-- Modal for enlarged uploads -->
+  <div class="modal-overlay" id="upload-modal">
+   <div class="relative w-[85%] h-[85%] bg-slate-900 rounded-xl border border-blue-400/20 p-4 flex flex-col"><button onclick="closeModal()" class="absolute top-3 right-3 p-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 transition-colors z-10"> <i data-lucide="x" class="w-5 h-5"></i> </button>
+    <div id="modal-content" class="flex-1 overflow-auto flex items-center justify-center"></div>
+   </div>
+  </div><!-- Quiz Login Modal -->
+  <div class="modal-overlay" id="quiz-modal">
+   <div class="quiz-login rounded-xl p-8 max-w-md w-full mx-4 slide-up">
+    <h3 class="font-heading text-xl font-bold text-white mb-1 text-center">Latihan Soal</h3>
+    <p class="text-sm text-gray-400 text-center mb-6" id="quiz-title"></p>
+    <form id="quiz-form" onsubmit="submitQuiz(event)">
+     <div class="space-y-4">
+      <div><label for="quiz-name" class="block text-sm text-gray-300 mb-1">Nama Lengkap</label> <input type="text" id="quiz-name" required class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-blue-400/20 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50" placeholder="Masukkan nama lengkap">
+      </div>
+      <div><label for="quiz-class" class="block text-sm text-gray-300 mb-1">Kelas</label> <input type="text" id="quiz-class" required class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-blue-400/20 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50" placeholder="Contoh: X MIPA 1">
+      </div>
+      <div><label for="quiz-code" class="block text-sm text-gray-300 mb-1">Kode Akses</label> <input type="text" id="quiz-code" required class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-blue-400/20 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50" placeholder="Masukkan kode akses">
+      </div>
+     </div><button type="submit" class="w-full mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold transition-all"> Mulai Latihan </button> <button type="button" onclick="closeQuizModal()" class="w-full mt-2 px-6 py-2 text-gray-400 hover:text-white text-sm transition-colors">Batal</button>
+    </form>
+   </div>
+  </div>
+  <script>
+// Data structure
+const chapters = [
+  {
+    id: 1, title: "Pengenalan Ilmu Kimia dan Materi",
+    subs: [
+      { id: "1-1", title: "Pendahuluan", type: "intro" },
+      { id: "1-2", title: "Hakikat dan Ruang Lingkup Ilmu Kimia", type: "content" },
+      { id: "1-3", title: "Metode Ilmiah dan Keselamatan Kerja", type: "content" },
+      { id: "1-4", title: "Materi dan Klasifikasinya", type: "content" },
+      { id: "1-5", title: "Sifat dan Perubahan Materi", type: "content" },
+      { id: "1-6", title: "Latihan Soal (20 Soal PG)", type: "quiz", quizInfo: "20 Soal Pilihan Ganda, 5 Pilihan" }
+    ],
+    extraInfo: `<div class="space-y-3"><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-blue-300">Info Penting:</strong> Kimia disebut "The Central Science" karena menghubungkan fisika, biologi, kedokteran, dan lingkungan.</p><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-amber-300">Tips Ujian:</strong> Hafal simbol bahaya laboratorium (Explosive, Flammable, Toxic, Corrosive) beserta contohnya.</p><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-emerald-300">Kunci:</strong> Bedakan perubahan fisika (tidak ada zat baru) vs perubahan kimia (ada zat baru).</p></div>`
+  },
+  {
+    id: 2, title: "Struktur Atom dan Sistem Periodik",
+    subs: [
+      { id: "2-1", title: "Pendahuluan", type: "intro" },
+      { id: "2-2", title: "Perkembangan Model Atom", type: "content" },
+      { id: "2-3", title: "Partikel Penyusun Atom dan Notasi Atom", type: "content" },
+      { id: "2-4", title: "Konfigurasi Elektron (Model Bohr)", type: "content" },
+      { id: "2-5", title: "Sistem Periodik Unsur (SPU)", type: "content" },
+      { id: "2-6", title: "Sifat Periodik Unsur", type: "content" },
+      { id: "2-7", title: "Latihan Soal (25 Soal PG)", type: "quiz", quizInfo: "25 Soal Pilihan Ganda, 5 Pilihan" }
+    ],
+    extraInfo: `<div class="space-y-3">
+  <p class="text-xs text-gray-300 leading-relaxed"><strong class="text-blue-300">Info Penting:</strong> Hafal urutan model atom: Dalton → Thomson → Rutherford → Bohr → Mekanika Kuantum.</p>
+  <p class="text-xs text-gray-300 leading-relaxed"><strong class="text-amber-300">Tips Ujian:</strong> Isotop (proton sama), Isobar (nomor massa sama), Isoton (neutron sama).</p>
+  <div class="border-t border-blue-400/10 pt-3 mt-3">
+    <p class="text-xs text-blue-300 font-semibold mb-2">Simulasi Interaktif:</p>
+    <button onclick="openSimulation('https://undangannayalyhs.my.canva.site/strukturatom')" class="w-full text-left block px-3 py-2 mb-2 rounded-lg bg-indigo-500/15 border border-indigo-400/20 text-indigo-300 text-xs hover:bg-indigo-500/25 transition-colors">
+      <i data-lucide="atom" class="inline w-3 h-3 mr-1"></i> Simulasi Model Atom
+    </button>
+    <button onclick="openSimulation('https://ptable.com/#Electrons/OxidationStates')" class="w-full text-left block px-3 py-2 rounded-lg bg-indigo-500/15 border border-indigo-400/20 text-indigo-300 text-xs hover:bg-indigo-500/25 transition-colors">
+      <i data-lucide="table" class="inline w-3 h-3 mr-1"></i> Tabel Periodik Unsur
+    </button>
+  </div>
+</div>`
+  },
+  {
+    id: 3, title: "Ikatan Kimia",
+    subs: [
+      { id: "3-1", title: "Pendahuluan", type: "intro" },
+      { id: "3-2", title: "Kestabilan Unsur (Aturan Oktet dan Duplet)", type: "content" },
+      { id: "3-3", title: "Ikatan Ion (Ikatan Elektrovalen)", type: "content" },
+      { id: "3-4", title: "Ikatan Kovalen", type: "content" },
+      { id: "3-5", title: "Ikatan Logam", type: "content" },
+      { id: "3-6", title: "Latihan Soal (25 Soal PG)", type: "quiz", quizInfo: "25 Soal Pilihan Ganda, 5 Pilihan" }
+    ],
+    extraInfo: `<div class="space-y-3"><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-blue-300">Info Penting:</strong> Logam + Non-Logam = Ikatan Ion. Non-Logam + Non-Logam = Ikatan Kovalen.</p><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-amber-300">Tips Ujian:</strong> Polar = asimetris + ada PEB. Non-polar = simetris + tanpa PEB.</p><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-emerald-300">Kunci:</strong> Ikatan logam = lautan elektron → penghantar listrik baik.</p></div>`
+  },
+  {
+    id: 4, title: "Tata Nama Senyawa dan Persamaan Reaksi",
+    subs: [
+      { id: "4-1", title: "Pendahuluan", type: "intro" },
+      { id: "4-2", title: "Tata Nama Senyawa Kimia", type: "content" },
+      { id: "4-3", title: "Persamaan Reaksi Kimia", type: "content" },
+      { id: "4-4", title: "Latihan Soal (20 Soal PG)", type: "quiz", quizInfo: "20 Soal Pilihan Ganda, 5 Pilihan" }
+    ],
+    extraInfo: `<div class="space-y-3"><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-blue-300">Info Penting:</strong> Senyawa ionik: Nama logam + non-logam + "-ida". Senyawa kovalen: Gunakan awalan Yunani.</p><p class="text-xs text-gray-300 leading-relaxed"><strong class="text-amber-300">Tips Ujian:</strong> Awalan mono tidak ditulis untuk unsur pertama. Hafal ion poliatomik umum.</p></div>`
+  },
+  {
+    id: 5, title: "Hukum Dasar Kimia & Stoikiometri",
+    subs: [
+      { id: "5-1", title: "Pendahuluan", type: "intro" },
+      { id: "5-2", title: "Hukum-Hukum Dasar Kimia", type: "content" },
+      { id: "5-3", title: "Konsep Mol (Jembatan Mol)", type: "content" },
+      { id: "5-4", title: "Stoikiometri Reaksi", type: "content" },
+      { id: "5-5", title: "Pereaksi Pembatas (Limiting Reactant)", type: "content" },
+      { id: "5-6", title: "Penyetaraan Persamaan Reaksi", type: "content" },
+      { id: "5-7", title: "Kimia Hijau (Green Chemistry)", type: "content" },
+      { id: "5-8", title: "Latihan Soal (50 Soal PG)", type: "quiz", quizInfo: "50 Soal Pilihan Ganda, 5 Pilihan" }
+    ],
+    extraInfo: `<div class="space-y-3">
+  <p class="text-xs text-gray-300 leading-relaxed"><strong class="text-blue-300">Info Penting:</strong> 1 Mol = 6,02 × 10²³ partikel. Rumus kunci: m = n × Mr, V = n × 22,4L (STP).</p>
+  <p class="text-xs text-gray-300 leading-relaxed"><strong class="text-amber-300">Tips Ujian:</strong> Pereaksi pembatas = mol/koefisien terkecil.</p>
+  <div class="border-t border-blue-400/10 pt-3 mt-3">
+    <p class="text-xs text-blue-300 font-semibold mb-2">Simulasi Interaktif:</p>
+    <button onclick="openSimulation('https://undangannayalyhs.my.canva.site/konsepmol-pereaksipembatas')" class="w-full text-left block px-3 py-2 mb-2 rounded-lg bg-indigo-500/15 border border-indigo-400/20 text-indigo-300 text-xs hover:bg-indigo-500/25 transition-colors">
+      <i data-lucide="flask-conical" class="inline w-3 h-3 mr-1"></i> Simulasi Konsep Mol
+    </button>
+    <button onclick="openSimulation('https://undangannayalyhs.my.canva.site/konsepmol-pereaksipembatas')" class="w-full text-left block px-3 py-2 mb-2 rounded-lg bg-indigo-500/15 border border-indigo-400/20 text-indigo-300 text-xs hover:bg-indigo-500/25 transition-colors">
+      <i data-lucide="beaker" class="inline w-3 h-3 mr-1"></i> Simulasi Pereaksi Pembatas
+    </button>
+    <button onclick="openSimulation('https://undangannayalyhs.my.canva.site/penyetaraanreaksikimia')" class="w-full text-left block px-3 py-2 rounded-lg bg-indigo-500/15 border border-indigo-400/20 text-indigo-300 text-xs hover:bg-indigo-500/25 transition-colors">
+      <i data-lucide="scale" class="inline w-3 h-3 mr-1"></i> Simulasi Penyetaraan Reaksi
+    </button>
+  </div>
+</div>`
+  }
+];
+
+// Content data for each sub-topic
+const contentData = {
+  "1-1": { title: "Pendahuluan", intro: true, text: `<p class="text-gray-300 leading-relaxed mb-4">Selamat datang di Pokok Bahasan pertama mata pelajaran Kimia Kelas X! Di bab ini, kamu akan diajak berkenalan dengan ilmu kimia secara menyeluruh — mulai dari apa itu kimia, bagaimana cara ilmuwan bekerja, hingga mengenal materi (zat) yang ada di sekitar kita.</p><p class="text-gray-300 leading-relaxed">Bab ini merupakan fondasi yang sangat penting sebelum kamu masuk ke materi yang lebih kompleks di bab-bab selanjutnya.</p>` },
+  "1-2": { title: "Hakikat dan Ruang Lingkup Ilmu Kimia", text: `<p class="text-gray-300 leading-relaxed mb-4"><strong class="text-white">Ilmu Kimia</strong> adalah ilmu yang mempelajari tentang struktur, susunan, sifat, dan perubahan materi, serta energi yang menyertai perubahan tersebut.</p><p class="text-gray-300 leading-relaxed mb-4">Ada <strong class="text-blue-300">4 poin utama</strong> yang dipelajari dari suatu zat:</p><ul class="space-y-3 mb-6"><li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0"></span><span class="text-gray-300"><strong class="text-white">Susunan Materi:</strong> Komponen penyusun materi dan perbandingan jumlah komponen tersebut.</span></li><li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-cyan-400 mt-2 flex-shrink-0"></span><span class="text-gray-300"><strong class="text-white">Struktur Materi:</strong> Bagaimana atom-atom saling terikat membentuk molekul.</span></li><li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></span><span class="text-gray-300"><strong class="text-white">Sifat Materi:</strong> Karakteristik unik suatu zat (titik didih, kelarutan, kereaktifan).</span></li><li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-amber-400 mt-2 flex-shrink-0"></span><span class="text-gray-300"><strong class="text-white">Perubahan Materi:</strong> Proses berubahnya suatu zat menjadi zat lain melalui reaksi kimia.</span></li></ul><div class="bg-blue-500/10 border border-blue-400/20 rounded-xl p-4"><p class="text-blue-200 text-sm"><strong>💡 Fun Fact:</strong> Kimia sering disebut sebagai <em>"The Central Science"</em> karena menghubungkan ilmu fisika dengan biologi, kedokteran, lingkungan, hingga geologi.</p></div>` },
+  "1-3": { title: "Metode Ilmiah dan Keselamatan Kerja", text: `<p class="text-gray-300 leading-relaxed mb-4">Kimia adalah ilmu berbasis eksperimen. Kamu akan diperkenalkan pada cara berpikir ilmuwan dan cara bekerja yang aman.</p><h4 class="text-lg font-heading font-bold text-white mt-6 mb-3">A. Metode Ilmiah</h4><p class="text-gray-300 mb-3">Langkah-langkah sistematis yang digunakan ilmuwan:</p><ol class="space-y-2 mb-6 ml-4"><li class="text-gray-300"><span class="text-blue-400 font-bold">1.</span> Merumuskan Masalah</li><li class="text-gray-300"><span class="text-blue-400 font-bold">2.</span> Mengumpulkan Data/Observasi</li><li class="text-gray-300"><span class="text-blue-400 font-bold">3.</span> Menyusun Hipotesis</li><li class="text-gray-300"><span class="text-blue-400 font-bold">4.</span> Melakukan Eksperimen</li><li class="text-gray-300"><span class="text-blue-400 font-bold">5.</span> Mengolah dan Menganalisis Data</li><li class="text-gray-300"><span class="text-blue-400 font-bold">6.</span> Melaporkan Hasil</li></ol><h4 class="text-lg font-heading font-bold text-white mt-6 mb-3">B. Keselamatan Kerja di Laboratorium</h4><p class="text-gray-300 mb-3">Simbol-simbol bahaya yang wajib dikenali:</p><div class="grid grid-cols-2 gap-3"><div class="bg-red-500/10 border border-red-400/20 rounded-lg p-3"><p class="text-red-300 font-semibold text-sm">💥 Explosive</p><p class="text-xs text-gray-400">Mudah meledak (amonium nitrat)</p></div><div class="bg-orange-500/10 border border-orange-400/20 rounded-lg p-3"><p class="text-orange-300 font-semibold text-sm">🔥 Flammable</p><p class="text-xs text-gray-400">Mudah terbakar (alkohol, aseton)</p></div><div class="bg-purple-500/10 border border-purple-400/20 rounded-lg p-3"><p class="text-purple-300 font-semibold text-sm">☠️ Toxic</p><p class="text-xs text-gray-400">Beracun (merkuri, metanol)</p></div><div class="bg-yellow-500/10 border border-yellow-400/20 rounded-lg p-3"><p class="text-yellow-300 font-semibold text-sm">⚗️ Corrosive</p><p class="text-xs text-gray-400">Korosif (asam sulfat pekat)</p></div></div>` },
+  "1-4": { title: "Materi dan Klasifikasinya", text: `<p class="text-gray-300 leading-relaxed mb-4"><strong class="text-white">Materi</strong> adalah segala sesuatu yang memiliki massa dan menempati ruang (memiliki volume).</p><h4 class="text-lg font-heading font-bold text-white mt-6 mb-3">A. Zat Tunggal (Zat Murni)</h4><div class="ml-4 space-y-4 mb-6"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold mb-1">Unsur</p><p class="text-gray-300 text-sm">Zat tunggal paling sederhana yang tidak bisa dibagi lagi. Contoh: Oksigen (O), Besi (Fe), Emas (Au).</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold mb-1">Senyawa</p><p class="text-gray-300 text-sm">Gabungan dua atau lebih unsur melalui reaksi kimia. Contoh: Air (H₂O) — dari H₂ yang mudah terbakar dan O₂ yang membantu pembakaran, hasilnya justru memadamkan api!</p></div></div><h4 class="text-lg font-heading font-bold text-white mt-6 mb-3">B. Campuran</h4><div class="ml-4 space-y-4"><div class="bg-slate-800/50 rounded-lg p-4 border border-emerald-400/10"><p class="text-emerald-300 font-semibold mb-1">Campuran Homogen (Larutan)</p><p class="text-gray-300 text-sm">Serba sama, tidak bisa dibedakan kasat mata. Contoh: air garam, sirup, udara.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-amber-400/10"><p class="text-amber-300 font-semibold mb-1">Campuran Heterogen</p><p class="text-gray-300 text-sm"><strong>Suspensi:</strong> Mengendap jika didiamkan (air kopi).<br><strong>Koloid:</strong> Di antara larutan dan suspensi (susu, santan, asap).</p></div></div>` },
+  "1-5": { title: "Sifat dan Perubahan Materi", text: `<h4 class="text-lg font-heading font-bold text-white mb-3">A. Sifat Materi</h4><div class="grid md:grid-cols-2 gap-4 mb-6"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold mb-2">Sifat Fisika</p><p class="text-gray-300 text-sm">Dapat diamati tanpa mengubah identitas kimia zat.</p><p class="text-gray-400 text-xs mt-2">Contoh: warna, wujud, titik didih, titik leleh, kelarutan, kerapatan.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-purple-400/10"><p class="text-purple-300 font-semibold mb-2">Sifat Kimia</p><p class="text-gray-300 text-sm">Kemampuan zat untuk bereaksi dengan zat lain.</p><p class="text-gray-400 text-xs mt-2">Contoh: mudah terbakar, berkarat, beracun, pH.</p></div></div><h4 class="text-lg font-heading font-bold text-white mb-3">B. Perubahan Materi</h4><div class="grid md:grid-cols-2 gap-4 mb-6"><div class="bg-slate-800/50 rounded-lg p-4 border border-emerald-400/10"><p class="text-emerald-300 font-semibold mb-2">Perubahan Fisika</p><p class="text-gray-300 text-sm">Tidak menghasilkan zat baru.</p><p class="text-gray-400 text-xs mt-2">Contoh: es mencair, kayu dipotong, garam dilarutkan.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-rose-400/10"><p class="text-rose-300 font-semibold mb-2">Perubahan Kimia</p><p class="text-gray-300 text-sm">Menghasilkan zat baru dengan sifat berbeda.</p><p class="text-gray-400 text-xs mt-2">Contoh: besi berkarat, kayu dibakar, makanan membusuk.</p></div></div><div class="bg-amber-500/10 border border-amber-400/20 rounded-xl p-4"><p class="text-amber-200 text-sm font-semibold mb-2">🔬 Ciri-ciri Reaksi Kimia:</p><p class="text-gray-300 text-sm">Terbentuknya gas • Terbentuknya endapan • Perubahan warna • Perubahan suhu</p></div>` },
+  "2-1": { title: "Pendahuluan", intro: true, text: `<p class="text-gray-300 leading-relaxed mb-4">Struktur Atom dan Sistem Periodik Unsur (SPU) adalah salah satu fondasi paling penting dalam kimia. Di bab ini, kamu seperti sedang diajak membedah isi dari sebuah Lego, lalu melihat bagaimana Lego-Lego tersebut disusun rapi dalam sebuah rak raksasa bernama <strong class="text-white">Tabel Periodik</strong>.</p>` },
+  "2-2": { title: "Perkembangan Model Atom", text: `<p class="text-gray-300 leading-relaxed mb-4">Para ilmuwan saling berdebat dan menyempurnakan teori pendahulunya:</p><div class="space-y-3"><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-blue-400"><p class="text-white font-semibold">John Dalton</p><p class="text-gray-300 text-sm">Atom = bola pejal tak terbagi (bola biliar)</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-cyan-400"><p class="text-white font-semibold">J.J. Thomson</p><p class="text-gray-300 text-sm">Menemukan elektron. Atom = bola positif dengan elektron tersebar (roti kismis)</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-emerald-400"><p class="text-white font-semibold">Ernest Rutherford</p><p class="text-gray-300 text-sm">Menemukan inti atom (proton). Sebagian besar ruang hampa, inti padat di tengah.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-amber-400"><p class="text-white font-semibold">Niels Bohr</p><p class="text-gray-300 text-sm">Elektron pada lintasan/kulit tertentu (sistem tata surya)</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-purple-400"><p class="text-white font-semibold">Mekanika Kuantum (Modern)</p><p class="text-gray-300 text-sm">Schrödinger & Heisenberg — posisi elektron = peluang (orbital)</p></div></div>` },
+  "2-3": { title: "Partikel Penyusun Atom dan Notasi Atom", text: `<p class="text-gray-300 leading-relaxed mb-4">Partikel subatom:</p><div class="grid grid-cols-3 gap-3 mb-6"><div class="bg-red-500/10 border border-red-400/20 rounded-lg p-3 text-center"><p class="text-red-300 font-bold text-lg">p⁺</p><p class="text-xs text-gray-400">Proton (+1)<br>Di inti</p></div><div class="bg-gray-500/10 border border-gray-400/20 rounded-lg p-3 text-center"><p class="text-gray-300 font-bold text-lg">n⁰</p><p class="text-xs text-gray-400">Neutron (0)<br>Di inti</p></div><div class="bg-blue-500/10 border border-blue-400/20 rounded-lg p-3 text-center"><p class="text-blue-300 font-bold text-lg">e⁻</p><p class="text-xs text-gray-400">Elektron (-1)<br>Luar inti</p></div></div><div class="bg-slate-800/50 rounded-xl p-5 border border-blue-400/10 mb-6"><p class="text-center text-white font-heading text-xl mb-2">ᴬ<sub>Z</sub>X</p><p class="text-gray-300 text-sm text-center">X = Lambang Unsur | A = Nomor Massa (p+n) | Z = Nomor Atom (p)</p></div><h4 class="text-lg font-heading font-bold text-white mb-3">Istilah Penting:</h4><div class="space-y-2"><div class="bg-slate-800/50 rounded-lg p-3 border border-blue-400/10"><p class="text-blue-300 font-semibold text-sm">Isotop — Nomor atom SAMA, massa berbeda (Proton sama)</p></div><div class="bg-slate-800/50 rounded-lg p-3 border border-cyan-400/10"><p class="text-cyan-300 font-semibold text-sm">Isobar — Nomor massa SAMA, nomor atom berbeda</p></div><div class="bg-slate-800/50 rounded-lg p-3 border border-emerald-400/10"><p class="text-emerald-300 font-semibold text-sm">Isoton — Jumlah neutron SAMA (A-Z sama)</p></div></div>` },
+  "2-4": { title: "Konfigurasi Elektron (Model Bohr)", text: `<p class="text-gray-300 leading-relaxed mb-4">Susunan elektron pada kulit atom. Rumus: <strong class="text-white">2n²</strong></p><div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"><div class="bg-slate-800/50 rounded-lg p-3 text-center border border-blue-400/10"><p class="text-blue-300 font-bold">K (n=1)</p><p class="text-white text-lg">2</p></div><div class="bg-slate-800/50 rounded-lg p-3 text-center border border-cyan-400/10"><p class="text-cyan-300 font-bold">L (n=2)</p><p class="text-white text-lg">8</p></div><div class="bg-slate-800/50 rounded-lg p-3 text-center border border-emerald-400/10"><p class="text-emerald-300 font-bold">M (n=3)</p><p class="text-white text-lg">18</p></div><div class="bg-slate-800/50 rounded-lg p-3 text-center border border-amber-400/10"><p class="text-amber-300 font-bold">N (n=4)</p><p class="text-white text-lg">32</p></div></div><div class="bg-blue-500/10 border border-blue-400/20 rounded-xl p-4"><p class="text-blue-200 text-sm"><strong>Contoh:</strong> Na (Z=11) → 2, 8, 1 → Elektron valensi = 1</p></div>` },
+  "2-5": { title: "Sistem Periodik Unsur (SPU)", text: `<p class="text-gray-300 leading-relaxed mb-4">Tabel Periodik Modern (Moseley) — disusun berdasarkan kenaikan nomor atom.</p><div class="space-y-4 mb-6"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold mb-1">Golongan (Vertikal)</p><p class="text-gray-300 text-sm">Unsur dengan sifat kimia mirip — elektron valensi sama</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold mb-1">Periode (Horizontal)</p><p class="text-gray-300 text-sm">Menunjukkan jumlah kulit atom</p></div></div><div class="bg-emerald-500/10 border border-emerald-400/20 rounded-xl p-4"><p class="text-emerald-200 text-sm"><strong>Contoh:</strong> Na (2, 8, 1) → 3 kulit = Periode 3, EV = 1 → Golongan IA</p></div>` },
+  "2-6": { title: "Sifat Periodik Unsur", text: `<div class="space-y-4"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold mb-2">1. Jari-jari Atom</p><p class="text-gray-300 text-sm">↓ Golongan: Makin Besar | → Periode: Makin Kecil</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold mb-2">2. Energi Ionisasi</p><p class="text-gray-300 text-sm">Energi untuk melepas elektron terluar. Tren: kebalikan jari-jari atom.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-emerald-400/10"><p class="text-emerald-300 font-semibold mb-2">3. Afinitas Elektron</p><p class="text-gray-300 text-sm">Kemampuan menyerap elektron. → Kanan & ↑ Atas: Makin Besar.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-amber-400/10"><p class="text-amber-300 font-semibold mb-2">4. Keelektronegatifan</p><p class="text-gray-300 text-sm">Kecenderungan menarik elektron dalam ikatan. → Kanan & ↑ Atas: Makin Besar.</p></div></div>` },
+  "3-1": { title: "Pendahuluan", intro: true, text: `<p class="text-gray-300 leading-relaxed mb-4">Setelah memahami struktur atom dan elektron valensi, sekarang kita masuk ke bab yang menjelaskan bagaimana atom-atom <strong class="text-white">"berinteraksi"</strong>. Di alam, jarang sekali ada atom yang betah sendirian, kecuali Gas Mulia. Mereka bergabung melalui <strong class="text-blue-300">Ikatan Kimia</strong> untuk mencapai kestabilan.</p>` },
+  "3-2": { title: "Kestabilan Unsur (Aturan Oktet dan Duplet)", text: `<p class="text-gray-300 leading-relaxed mb-4">Gas Mulia (Golongan VIIIA) paling stabil karena kulit terluarnya penuh.</p><div class="grid md:grid-cols-2 gap-4 mb-4"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold mb-1">Aturan Duplet</p><p class="text-gray-300 text-sm">2 elektron valensi (seperti He). Untuk H dan Li.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold mb-1">Aturan Oktet</p><p class="text-gray-300 text-sm">8 elektron valensi (seperti Ne, Ar). Untuk sebagian besar unsur.</p></div></div><p class="text-gray-300 text-sm">Cara mencapai: serah terima elektron atau pemakaian bersama elektron. Digambarkan dengan <strong class="text-white">Struktur Lewis</strong>.</p>` },
+  "3-3": { title: "Ikatan Ion (Ikatan Elektrovalen)", text: `<p class="text-gray-300 leading-relaxed mb-4">Terjadi karena <strong class="text-white">serah terima elektron</strong> antara logam (melepas → kation) dan non-logam (menangkap → anion).</p><div class="bg-slate-800/50 rounded-xl p-5 border border-blue-400/10 mb-4"><p class="text-center text-white mb-2 font-semibold">Contoh: NaCl</p><p class="text-gray-300 text-sm text-center">Na (2,8,1) → melepas 1e⁻ → Na⁺<br>Cl (2,8,7) → menangkap 1e⁻ → Cl⁻<br>Na⁺ + Cl⁻ → NaCl</p></div><h4 class="text-white font-semibold mb-2">Sifat Senyawa Ion:</h4><ul class="space-y-1 text-gray-300 text-sm"><li>• Titik didih & leleh sangat tinggi</li><li>• Keras tetapi rapuh</li><li>• Menghantarkan listrik dalam lelehan/larutan (bukan padatan)</li></ul>` },
+  "3-4": { title: "Ikatan Kovalen", text: `<p class="text-gray-300 leading-relaxed mb-4">Terjadi karena <strong class="text-white">pemakaian bersama pasangan elektron</strong>. Antara non-logam dengan non-logam.</p><div class="space-y-3 mb-4"><div class="bg-slate-800/50 rounded-lg p-3 border border-blue-400/10"><p class="text-blue-300 font-semibold text-sm">Kovalen Tunggal — 1 pasang e⁻ (H₂O, HCl, CH₄)</p></div><div class="bg-slate-800/50 rounded-lg p-3 border border-cyan-400/10"><p class="text-cyan-300 font-semibold text-sm">Kovalen Rangkap Dua — 2 pasang e⁻ (O₂, CO₂)</p></div><div class="bg-slate-800/50 rounded-lg p-3 border border-emerald-400/10"><p class="text-emerald-300 font-semibold text-sm">Kovalen Rangkap Tiga — 3 pasang e⁻ (N₂)</p></div></div><h4 class="text-white font-semibold mb-2 mt-4">Kovalen Koordinasi:</h4><p class="text-gray-300 text-sm mb-4">Pasangan elektron hanya dari satu atom saja. Contoh: NH₄⁺, SO₃.</p><h4 class="text-white font-semibold mb-2">Kepolaran:</h4><div class="grid md:grid-cols-2 gap-3"><div class="bg-slate-800/50 rounded-lg p-3 border border-amber-400/10"><p class="text-amber-300 font-semibold text-sm">Polar</p><p class="text-gray-400 text-xs">Asimetris + ada PEB (H₂O, NH₃)</p></div><div class="bg-slate-800/50 rounded-lg p-3 border border-purple-400/10"><p class="text-purple-300 font-semibold text-sm">Non-polar</p><p class="text-gray-400 text-xs">Simetris + tanpa PEB (CH₄, O₂)</p></div></div>` },
+  "3-5": { title: "Ikatan Logam", text: `<p class="text-gray-300 leading-relaxed mb-4">Menurut <strong class="text-white">teori lautan elektron</strong>: atom logam melepas elektron valensi → kation tersusun rapi + elektron bebas bergerak sebagai "lautan elektron".</p><h4 class="text-white font-semibold mb-3">Sifat Logam:</h4><div class="space-y-3"><div class="bg-slate-800/50 rounded-lg p-4 border border-amber-400/10"><p class="text-amber-300 font-semibold text-sm">⚡ Penghantar listrik & panas</p><p class="text-gray-400 text-xs">Elektron bebas bergerak membawa muatan/energi</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold text-sm">🔨 Dapat ditempa & diregangkan</p><p class="text-gray-400 text-xs">Lapisan ion bergeser tapi tetap direkatkan lautan elektron</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold text-sm">✨ Mengkilap</p><p class="text-gray-400 text-xs">Elektron bebas menyerap dan memancarkan kembali cahaya</p></div></div><div class="bg-emerald-500/10 border border-emerald-400/20 rounded-xl p-4 mt-4"><p class="text-emerald-200 text-sm"><strong>Tips Cepat:</strong> Logam + Non-Logam = Ion | Non-Logam + Non-Logam = Kovalen</p></div>` },
+  "4-1": { title: "Pendahuluan", intro: true, text: `<p class="text-gray-300 leading-relaxed mb-4">"Tata Nama Senyawa dan Persamaan Reaksi" adalah jembatan penting di kelas X. Di bab ini kamu akan belajar cara memberikan <strong class="text-white">nama ilmiah universal</strong> pada zat-zat kimia dan cara menuliskan "resep" reaksi kimia secara matematis dan akurat.</p>` },
+  "4-2": { title: "Tata Nama Senyawa Kimia", text: `<h4 class="text-lg font-heading font-bold text-white mb-3">A. Senyawa Biner</h4><div class="space-y-4 mb-6"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold mb-2">1. Logam + Non-logam (Ionik)</p><p class="text-gray-300 text-sm mb-2">Aturan: Nama Logam + Non-logam + "-ida"</p><p class="text-gray-400 text-xs">NaCl = Natrium klorida | FeCl₂ = Besi(II) klorida | FeCl₃ = Besi(III) klorida</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold mb-2">2. Non-logam + Non-logam (Kovalen)</p><p class="text-gray-300 text-sm mb-2">Gunakan awalan Yunani: mono, di, tri, tetra, penta, heksa...</p><p class="text-gray-400 text-xs">CO = Karbon monoksida | CO₂ = Karbon dioksida | N₂O₅ = Dinitrogen pentaoksida</p></div></div><h4 class="text-lg font-heading font-bold text-white mb-3">B. Senyawa Poliatomik</h4><p class="text-gray-300 text-sm mb-3">Nama Kation + Nama Anion Poliatomik</p><p class="text-gray-400 text-xs mb-4">CaCO₃ = Kalsium karbonat | KNO₃ = Kalium nitrat | Al₂(SO₄)₃ = Aluminium sulfat</p><h4 class="text-lg font-heading font-bold text-white mb-3">C. Asam dan Basa</h4><div class="grid md:grid-cols-2 gap-3"><div class="bg-red-500/10 rounded-lg p-3 border border-red-400/10"><p class="text-red-300 font-semibold text-sm">Asam (H⁺)</p><p class="text-gray-400 text-xs">HCl = Asam klorida<br>H₂SO₄ = Asam sulfat</p></div><div class="bg-blue-500/10 rounded-lg p-3 border border-blue-400/10"><p class="text-blue-300 font-semibold text-sm">Basa (OH⁻)</p><p class="text-gray-400 text-xs">NaOH = Natrium hidroksida<br>Ca(OH)₂ = Kalsium hidroksida</p></div></div>` },
+  "4-3": { title: "Persamaan Reaksi Kimia", text: `<h4 class="text-lg font-heading font-bold text-white mb-3">1. Komponen Persamaan Reaksi</h4><div class="space-y-2 mb-6"><div class="flex gap-2 text-sm"><span class="text-blue-300 font-semibold w-24 flex-shrink-0">Pereaksi</span><span class="text-gray-300">Zat awal (kiri tanda panah)</span></div><div class="flex gap-2 text-sm"><span class="text-cyan-300 font-semibold w-24 flex-shrink-0">Produk</span><span class="text-gray-300">Zat baru (kanan tanda panah)</span></div><div class="flex gap-2 text-sm"><span class="text-emerald-300 font-semibold w-24 flex-shrink-0">Koefisien</span><span class="text-gray-300">Angka di depan rumus kimia</span></div><div class="flex gap-2 text-sm"><span class="text-amber-300 font-semibold w-24 flex-shrink-0">Fase</span><span class="text-gray-300">(s) padat, (l) cair, (g) gas, (aq) larutan</span></div></div><h4 class="text-lg font-heading font-bold text-white mb-3">2. Penyetaraan Reaksi</h4><p class="text-gray-300 text-sm mb-3">Berdasarkan Hukum Kekekalan Massa: atom kiri = atom kanan. Ubah koefisien, BUKAN indeks.</p><div class="bg-slate-800/50 rounded-xl p-4 border border-blue-400/10 mb-4"><p class="text-gray-300 text-sm">H₂ + O₂ → H₂O (belum setara)</p><p class="text-blue-300 text-sm font-semibold mt-2">2H₂ + O₂ → 2H₂O ✓ (setara!)</p></div><div class="bg-amber-500/10 border border-amber-400/20 rounded-xl p-4"><p class="text-amber-200 text-sm"><strong>Metode Aljabar:</strong> Untuk reaksi kompleks, gunakan permisalan a, b, c, d lalu buat persamaan untuk tiap jenis atom.</p></div>` },
+  "5-1": { title: "Pendahuluan", intro: true, text: `<p class="text-gray-300 leading-relaxed mb-4">Jika bab-bab sebelumnya adalah perkenalan materi dan teorinya, maka bab ini adalah tempat di mana kamu mulai <strong class="text-white">"berhitung"</strong>. Stoikiometri sering disebut sebagai <em class="text-blue-300">matematika di balik ilmu kimia</em>. Di sini kamu akan belajar menghitung berapa banyak zat yang bereaksi dan berapa banyak produk yang dihasilkan.</p>` },
+  "5-2": { title: "Hukum-Hukum Dasar Kimia", text: `<div class="space-y-3"><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-blue-400"><p class="text-white font-semibold">Hukum Kekekalan Massa (Lavoisier)</p><p class="text-gray-300 text-sm">Massa sebelum = massa sesudah reaksi.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-cyan-400"><p class="text-white font-semibold">Hukum Perbandingan Tetap (Proust)</p><p class="text-gray-300 text-sm">Perbandingan massa unsur dalam senyawa selalu tetap. H₂O selalu H:O = 1:8.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-emerald-400"><p class="text-white font-semibold">Hukum Perbandingan Berganda (Dalton)</p><p class="text-gray-300 text-sm">Dua unsur membentuk >1 senyawa → perbandingan massa = bilangan bulat sederhana.</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-amber-400"><p class="text-white font-semibold">Hukum Perbandingan Volume (Gay-Lussac)</p><p class="text-gray-300 text-sm">Volume gas bereaksi berbanding sebagai bilangan bulat (= koefisien).</p></div><div class="bg-slate-800/50 rounded-lg p-4 border-l-4 border-purple-400"><p class="text-white font-semibold">Hipotesis Avogadro</p><p class="text-gray-300 text-sm">Suhu & tekanan sama → volume sama = jumlah molekul sama.</p></div></div>` },
+  "5-3": { title: "Konsep Mol (Jembatan Mol)", text: `<div class="bg-blue-500/10 border border-blue-400/20 rounded-xl p-5 mb-6 text-center"><p class="text-blue-200 text-lg font-heading font-bold">1 Mol = 6,02 × 10²³ partikel</p></div><h4 class="text-white font-semibold mb-3">Rumus Hubungan Mol:</h4><div class="space-y-3"><div class="bg-slate-800/50 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold text-sm">Mol ↔ Jumlah Partikel</p><p class="text-gray-300 text-sm">X = n × 6,02 × 10²³</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-cyan-400/10"><p class="text-cyan-300 font-semibold text-sm">Mol ↔ Massa</p><p class="text-gray-300 text-sm">m = n × Mr</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-emerald-400/10"><p class="text-emerald-300 font-semibold text-sm">Mol ↔ Volume Gas</p><p class="text-gray-300 text-sm">STP: V = n × 22,4 L | RTP: V = n × 24 L | PV = nRT</p></div><div class="bg-slate-800/50 rounded-lg p-4 border border-amber-400/10"><p class="text-amber-300 font-semibold text-sm">Mol ↔ Molaritas</p><p class="text-gray-300 text-sm">M = n / V(Liter)</p></div></div>` },
+  "5-4": { title: "Stoikiometri Reaksi", text: `<div class="bg-emerald-500/10 border border-emerald-400/20 rounded-xl p-4 mb-6"><p class="text-emerald-200 text-sm font-semibold text-center">Perbandingan Koefisien = Perbandingan Mol</p></div><h4 class="text-white font-semibold mb-3">Langkah Mengerjakan:</h4><ol class="space-y-2 ml-4 text-gray-300 text-sm"><li><span class="text-blue-400 font-bold">1.</span> Tulis & setarakan persamaan reaksi</li><li><span class="text-blue-400 font-bold">2.</span> Ubah data yang diketahui → Mol</li><li><span class="text-blue-400 font-bold">3.</span> Gunakan perbandingan koefisien: Mol dicari = (koef. dicari / koef. diketahui) × mol diketahui</li><li><span class="text-blue-400 font-bold">4.</span> Ubah mol → satuan yang diminta (gram, liter, partikel)</li></ol>` },
+  "5-5": { title: "Pereaksi Pembatas (Limiting Reactant)", text: `<p class="text-gray-300 leading-relaxed mb-4">Dalam praktik, jarang reaktan habis bersamaan.</p><div class="grid md:grid-cols-2 gap-4 mb-4"><div class="bg-red-500/10 rounded-lg p-4 border border-red-400/10"><p class="text-red-300 font-semibold">Pereaksi Pembatas</p><p class="text-gray-300 text-sm">Habis duluan → menentukan jumlah produk</p></div><div class="bg-blue-500/10 rounded-lg p-4 border border-blue-400/10"><p class="text-blue-300 font-semibold">Pereaksi Sisa</p><p class="text-gray-300 text-sm">Berlebih → masih tersisa setelah reaksi</p></div></div><div class="bg-amber-500/10 border border-amber-400/20 rounded-xl p-4"><p class="text-amber-200 text-sm"><strong>Cara Menentukan:</strong> Hitung mol/koefisien tiap reaktan → yang terkecil = pereaksi pembatas.</p></div>` },
+  "5-6": { title: "Penyetaraan Persamaan Reaksi", text: `<p class="text-gray-300 leading-relaxed mb-4">Berdasarkan Hukum Lavoisier: jumlah atom kiri = kanan. Ubah koefisien, BUKAN indeks.</p><div class="bg-slate-800/50 rounded-xl p-5 border border-blue-400/10 mb-4"><p class="text-white font-semibold mb-2">Metode Aljabar:</p><p class="text-gray-300 text-sm mb-2">CH₄ + O₂ → CO₂ + H₂O</p><p class="text-gray-300 text-sm">Misalkan: a CH₄ + b O₂ → c CO₂ + d H₂O</p><p class="text-gray-400 text-xs mt-2">C: a=c | H: 4a=2d | O: 2b=2c+d</p><p class="text-gray-400 text-xs">Jika a=1 → c=1, d=2, b=2</p><p class="text-blue-300 text-sm font-semibold mt-2">CH₄ + 2O₂ → CO₂ + 2H₂O ✓</p></div>` },
+  "5-7": { title: "Kimia Hijau (Green Chemistry)", text: `<p class="text-gray-300 leading-relaxed mb-4">Merancang proses kimia yang mengurangi zat berbahaya.</p><div class="space-y-4"><div class="bg-emerald-500/10 rounded-lg p-4 border border-emerald-400/10"><p class="text-emerald-300 font-semibold mb-1">🌿 Reaksi Ramah Lingkungan</p><p class="text-gray-300 text-sm">Fotosintesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</p><p class="text-gray-400 text-xs">Mengurangi gas rumah kaca</p></div><div class="bg-red-500/10 rounded-lg p-4 border border-red-400/10"><p class="text-red-300 font-semibold mb-1">🏭 Reaksi Polutan</p><p class="text-gray-300 text-sm">Pembakaran tidak sempurna: 2C₈H₁₈ + 17O₂ → 16CO + 18H₂O</p><p class="text-gray-400 text-xs">Menghasilkan CO yang beracun</p></div></div>` }
+};
+
+let currentChapter = null;
+let currentSub = null;
+let uploadedFiles = {};
+
+// Page navigation
+function showPage(page) {
+  document.getElementById('page-landing').classList.toggle('hidden', page !== 'landing');
+  document.getElementById('page-content').classList.toggle('hidden', page !== 'content');
+  if (page === 'content') {
+    renderNav();
+    lucide.createIcons();
+  }
+}
+
+// Render navigation
+function renderNav() {
+  const nav = document.getElementById('nav-list');
+  nav.innerHTML = chapters.map(ch => `
+    <div class="mb-1">
+      <button onclick="toggleDropdown('ch-${ch.id}')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-semibold transition-colors ${currentChapter === ch.id ? 'bg-blue-500/20 text-blue-300' : 'text-gray-300 hover:bg-slate-800/50'}">
+        <span class="flex-1">${ch.id}. ${ch.title}</span>
+        <i data-lucide="chevron-down" class="w-3 h-3 flex-shrink-0 transition-transform ml-1" id="ch-${ch.id}-icon"></i>
+      </button>
+      <div id="ch-${ch.id}" class="dropdown-content ml-3 space-y-0.5">
+        ${ch.subs.map(sub => `
+          <button onclick="loadContent('${sub.id}', ${ch.id})" class="w-full text-left px-3 py-1.5 rounded text-xs transition-colors ${currentSub === sub.id ? 'bg-blue-500/15 text-blue-300' : 'text-gray-400 hover:text-gray-200 hover:bg-slate-800/30'}">
+            ${sub.type === 'quiz' ? '🔆' : sub.type === 'intro' ? '🔆' : '🔆'} ${sub.title}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+// Toggle dropdown
+function toggleDropdown(id) {
+  const el = document.getElementById(id);
+  const icon = document.getElementById(id + '-icon');
+  el.classList.toggle('open');
+  if (icon) icon.style.transform = el.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+// Load content
+function loadContent(subId, chapterId) {
+  currentChapter = chapterId;
+  currentSub = subId;
+  
+  const chapter = chapters.find(c => c.id === chapterId);
+  const sub = chapter.subs.find(s => s.id === subId);
+  
+  if (sub.type === 'quiz') {
+    showQuizModal(sub);
+    return;
+  }
+  
+  const data = contentData[subId];
+  if (!data) {
+    document.getElementById('content-body').innerHTML = `<div class="text-center py-20 text-gray-400"><p>Konten sedang dikembangkan...</p></div>`;
+    renderNav();
+    return;
+  }
+  
+  let html = `<div class="slide-up"><h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6">${data.title}</h2>`;
+  html += `<div class="prose-content mb-8">${data.text}</div>`;
+  
+  // Add upload zone for intro pages
+  if (data.intro) {
+    const uploadId = `upload-${subId}`;
+    html += `
+      <div class="mt-6">
+        <p class="text-xs text-gray-400 mb-2">Media Pendukung:</p>
+        <div class="upload-zone rounded-xl p-6 text-center cursor-pointer min-h-[150px] flex flex-col items-center justify-center" onclick="document.getElementById('file-${subId}').click()" id="zone-${subId}">
+          <div id="preview-${subId}">${uploadedFiles[subId] ? renderUploadedFile(uploadedFiles[subId]) : `<i data-lucide="upload-cloud" class="w-10 h-10 text-blue-400/50 mx-auto mb-2"></i><p class="text-sm text-gray-400">Klik untuk upload file (gambar, video, audio, HTML)</p><p class="text-xs text-gray-500">atau drag & drop file di sini</p>`}</div>
+        </div>
+        <input type="file" id="file-${subId}" class="hidden" accept="image/*,video/*,audio/*,.html,.htm" onchange="handleUpload(event, '${subId}')">
+        ${uploadedFiles[subId] ? `<button onclick="enlargeUpload('${subId}')" class="mt-2 text-xs text-blue-400 hover:text-blue-300 transition-colors"><i data-lucide="maximize-2" class="inline w-3 h-3 mr-1"></i>Perbesar</button>` : ''}
+      </div>`;
+  }
+  
+  html += `</div>`;
+  document.getElementById('content-body').innerHTML = html;
+  
+  // Update extra info
+  document.getElementById('extra-info').innerHTML = chapter.extraInfo;
+  
+  renderNav();
+  lucide.createIcons();
+}
+
+// File upload handling
+function handleUpload(event, subId) {
+  const file = event.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    uploadedFiles[subId] = { name: file.name, type: file.type, data: e.target.result };
+    const preview = document.getElementById(`preview-${subId}`);
+    preview.innerHTML = renderUploadedFile(uploadedFiles[subId]);
+    
+    // Add enlarge button
+    const zone = document.getElementById(`zone-${subId}`);
+    if (!zone.parentNode.querySelector('.enlarge-btn')) {
+      const btn = document.createElement('button');
+      btn.className = 'enlarge-btn mt-2 text-xs text-blue-400 hover:text-blue-300 transition-colors';
+      btn.innerHTML = '<i data-lucide="maximize-2" class="inline w-3 h-3 mr-1"></i>Perbesar';
+      btn.onclick = () => enlargeUpload(subId);
+      zone.parentNode.appendChild(btn);
+      lucide.createIcons();
+    }
+    lucide.createIcons();
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderUploadedFile(file) {
+  if (file.type.startsWith('image/')) return `<img src="${file.data}" class="max-h-[200px] rounded-lg mx-auto" alt="${file.name}">`;
+  if (file.type.startsWith('video/')) return `<video src="${file.data}" controls class="max-h-[200px] rounded-lg mx-auto"></video>`;
+  if (file.type.startsWith('audio/')) return `<audio src="${file.data}" controls class="mx-auto"></audio>`;
+  return `<div class="text-center"><i data-lucide="file" class="w-8 h-8 text-blue-400 mx-auto mb-1"></i><p class="text-xs text-gray-300">${file.name}</p></div>`;
+}
+
+function enlargeUpload(subId) {
+  const file = uploadedFiles[subId];
+  if (!file) return;
+  const modal = document.getElementById('upload-modal');
+  const content = document.getElementById('modal-content');
+  if (file.type.startsWith('image/')) content.innerHTML = `<img src="${file.data}" class="max-w-full max-h-full object-contain rounded-lg">`;
+  else if (file.type.startsWith('video/')) content.innerHTML = `<video src="${file.data}" controls class="max-w-full max-h-full rounded-lg"></video>`;
+  else if (file.type.startsWith('audio/')) content.innerHTML = `<audio src="${file.data}" controls class="mx-auto"></audio>`;
+  else content.innerHTML = `<iframe srcdoc="${file.data}" class="w-full h-full rounded-lg"></iframe>`;
+  modal.classList.add('active');
+}
+
+function closeModal() { document.getElementById('upload-modal').classList.remove('active'); }
+
+// Quiz modal
+function showQuizModal(sub) {
+  document.getElementById('quiz-title').textContent = sub.quizInfo;
+  document.getElementById('quiz-modal').classList.add('active');
+}
+function closeQuizModal() { document.getElementById('quiz-modal').classList.remove('active'); }
+function submitQuiz(e) {
+  e.preventDefault();
+  const name = document.getElementById('quiz-name').value;
+  const cls = document.getElementById('quiz-class').value;
+  const code = document.getElementById('quiz-code').value;
+  // In production, this would validate and redirect
+  closeQuizModal();
+  document.getElementById('content-body').innerHTML = `
+    <div class="slide-up text-center py-16">
+      <div class="inline-block p-4 rounded-full bg-emerald-500/10 border border-emerald-400/20 mb-4">
+        <i data-lucide="check-circle" class="w-12 h-12 text-emerald-400"></i>
+      </div>
+      <h3 class="font-heading text-2xl font-bold text-white mb-2">Login Berhasil!</h3>
+      <p class="text-gray-400 mb-1">Nama: ${name} | Kelas: ${cls}</p>
+      <p class="text-gray-500 text-sm">(Demo — Soal akan dimuat dari server)</p>
+    </div>`;
+  lucide.createIcons();
+  document.getElementById('quiz-form').reset();
+}
+
+// Config
+const defaultConfig = {
+  main_title: "Kimia Kelas X",
+  teacher_name: "Dedi Erlangga, S. Pd.",
+  background_color: "#0f172a",
+  surface_color: "#1e293b",
+  text_color: "#e2e8f0",
+  primary_action: "#3b82f6",
+  secondary_action: "#64748b",
+  font_family: "Playfair Display",
+  font_size: 16
+};
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => {
+    const title = config.main_title || defaultConfig.main_title;
+    const teacher = config.teacher_name || defaultConfig.teacher_name;
+    const bg = config.background_color || defaultConfig.background_color;
+    const surface = config.surface_color || defaultConfig.surface_color;
+    const text = config.text_color || defaultConfig.text_color;
+    const primary = config.primary_action || defaultConfig.primary_action;
+    const font = config.font_family || defaultConfig.font_family;
+    const size = config.font_size || defaultConfig.font_size;
+    
+    const lt = document.getElementById('landing-title');
+    if (lt) lt.textContent = title;
+    const lte = document.getElementById('landing-teacher');
+    if (lte) lte.textContent = teacher;
+    const nt = document.getElementById('nav-teacher');
+    if (nt) nt.textContent = 'Guru: ' + teacher;
+    
+    document.body.style.fontFamily = `${font}, Source Sans 3, sans-serif`;
+    document.body.style.fontSize = size + 'px';
+  },
+  mapToCapabilities: (config) => ({
+    recolorables: [
+      { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+      { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+      { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+      { get: () => config.primary_action || defaultConfig.primary_action, set: (v) => { config.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); } },
+      { get: () => config.secondary_action || defaultConfig.secondary_action, set: (v) => { config.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); } }
+    ],
+    borderables: [],
+    fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+    fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+  }),
+  mapToEditPanelValues: (config) => new Map([
+    ["main_title", config.main_title || defaultConfig.main_title],
+    ["teacher_name", config.teacher_name || defaultConfig.teacher_name]
+  ])
+});
+
+// Init
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0a7fad51418c826',t:'MTc4MTI1ODEyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<!-- Modal Simulasi Interaktif Iframe -->
+<div id="simulation-modal" class="fixed inset-0 z-[1100] hidden items-center justify-center bg-black/60 backdrop-blur-md">
+  <div class="relative w-2/3 aspect-video bg-slate-950 border border-blue-500/30 rounded-xl shadow-2xl shadow-blue-500/10 flex flex-col overflow-hidden">
+    <!-- Header Modal Kecil -->
+    <div class="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-blue-400/10 flex-shrink-0">
+      <span class="text-xs font-semibold text-blue-400 flex items-center gap-1.5">
+        <i data-lucide="monitor-play" class="w-3.5 h-3.5"></i> Simulasi Interaktif Lab Kimia
+      </span>
+      <button onclick="closeSimulation()" class="p-1 rounded bg-red-500/15 hover:bg-red-500/30 text-red-400 transition-colors">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+    <!-- Frame Konten Utama -->
+    <div class="flex-1 w-full h-full bg-slate-900">
+      <iframe id="simulation-iframe" src="" class="w-full h-full border-none" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+function openSimulation(url) {
+  const modal = document.getElementById('simulation-modal');
+  const iframe = document.getElementById('simulation-iframe');
+  
+  if (modal && iframe) {
+    iframe.src = url;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+}
+
+function closeSimulation() {
+  const modal = document.getElementById('simulation-modal');
+  const iframe = document.getElementById('simulation-iframe');
+  
+  if (modal && iframe) {
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    iframe.src = "";
+  }
+}
+</script>
+</body>
+</html>
